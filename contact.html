@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en" >
+<head>
+    <meta name="Description" content="Personal website of ARMEDICA LLC">
+    <meta name="robots" content="index,follow">
+    <meta http-equiv="Content-Type" content="text/html"; charset="utf-8">
+    <meta name="revised" content="Victor, 8/21/20">
+    <meta name="Publisher" content="ARMEDICA LLC">
+
+    <link href='https://fonts.googleapis.com/css?family=Carme' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css?family=Archivo:500|Open+Sans:300,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Chivo:300,700|Playfair+Display:700i" rel="stylesheet">
+    <style>
+        .navbar{
+            text-align: center;
+            margin: 50px 15px 0px 15px;
+            padding: 20px 1% 20px 1%;
+            background-color: #cd853f;
+            border-radius: 40px;
+        }
+        .navbar span{
+            font-size: x-large;
+            font-family: Playfair Display, Verdana, Helvetica, serif;
+            display: inline-block;
+            position: relative;
+            white-space:nowrap;
+        }
+        .navbar a{
+            color: white;
+            text-decoration: none;
+        }
+        @media screen and (max-width: 1050px) {
+            .navbar a{
+                font-size:medium;
+            }
+        }
+        @media screen and (max-width: 1000px) {
+            .navbar a{
+                font-size:small;
+            }
+        }
+        .backdrop{
+            padding: 0px;
+            margin: 0px;
+            border: 0px;
+            overflow: scroll;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-image: linear-gradient(#f4af60, #8b4513);
+        }
+        .spacer {
+            display: inline-block;
+            width: 5px;
+        }
+        .contact{
+            background-color: white;
+            margin: 40px 25% 150px 25%;
+            padding-right: 0px;
+            padding-top: 40px;
+            border-radius: 50px;
+            min-width: 700px;
+            padding-bottom: 5px;
+        }
+        .contact label{
+            font-size: 110%;
+            font-family: Open Sans, Carme, Verdana, Helvetica, serif;
+            padding: 0px 100px 20px 10%;
+            margin: 0px;
+            position: relative;
+            display: inline-block;
+            width: 300px;
+        }
+        .contact input{
+            margin: 0px;
+            overflow: scroll;
+        }
+        .contact span{
+            font-size: 110%;
+            font-family: Open Sans, Carme, Verdana, Helvetica, serif;
+            padding: 0px 100px 20px 5%;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            text-align: center;
+        }
+        .contact p{
+            color: red;
+            text-dec
+        }
+        .backdrop button{
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+            vertical-align: middle;
+            background-color: orange;
+            border-color: white;
+            width: 20%;
+            height: 35%;
+            margin-bottom: 100px;
+            
+        }
+        .backdrop button a{
+            color: white;
+            font-size: 130%;
+            font-family: Open Sans, Carme, Verdana, Helvetica, serif;
+            text-decoration: none;
+        }
+        .backdrop button:hover {
+            box-shadow: 0 0 10px black;
+        }
+        @media screen and (max-width: 1050px) {
+            .backdrop button a{
+                font-size: x-large;
+            }
+            .contact{
+                margin-left: 10px;
+            }
+        }
+
+        body{
+            padding: 0px;
+            margin: 0px;
+            border: 0px;
+            background-color: #dcdcdc;
+        }
+    </style>
+</head>
+<body>
+    <div class="backdrop">
+        <div class="navbar">
+            <span style="margin-left: 1%;"><a href="index.html">Available Listings</a></span>
+            <span style="margin-left: 25%; margin-right: 30%;"><a href="policies.html">Policies</a></span>
+            <span style="margin-left: 5%; margin-right: 10%; display: none;"><a href="payment.html">Make Payment</a></span>
+            <span style="margin-right: 1%;"><a href="contact.html">Contact Us</a></span>
+        </div>
+        <script>
+            window.onload = function() {
+                name_checkboxes();
+                get_min_date()
+            }
+            function sound_the_alarm(){
+                a = document.getElementById("alert");
+                a.innerHTML = "Request not submitted. Please fill out all fields."
+
+            }
+            function name_checkboxes(){
+                var i;
+                var boxes = document.getElementsByClassName("blank");
+                for (i=0;i<boxes.length;i++){
+                    key = boxes[i].innerHTML;
+                    if (sessionStorage.getItem(key) == null){continue;}
+                    raw_info = sessionStorage.getItem(key).split('/');
+                    boxes[i].innerHTML = raw_info[0]+":";
+                }
+            }
+            function get_min_date(){
+                var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth()+1; //January is 0!
+                var yyyy = today.getFullYear();
+                 if(dd<10){dd='0'+dd} 
+                    if(mm<10){mm='0'+mm} 
+                today = yyyy+'-'+mm+'-'+dd;
+                document.getElementById("myDate").min = today;
+            }
+            function fill_content(){
+                fields = document.forms[0].elements;
+                inputs = new Array;
+                for (i=1;i<fields.length;i++){
+                    name = fields[i-1].name
+                    val = fields[i-1].value
+                    if (name == null || name == "" || val == null || val == ""){
+                        sound_the_alarm();
+                        return null;
+                    }
+                    if ([4,5,6,7,8,9,10].includes(i-1)){
+                        inputs.push(fields[i-1].checked)
+                    }
+                    else{
+                        inputs.push(val);
+                    }
+                }
+                apts = inputs.slice(4,7);
+                apts_string = new Array;
+                for (i=0;i<3;i++){
+                    if (apts[i]){
+                        apts_string.push(sessionStorage.getItem(String(i)).split('/')[0].split(',')[0]);
+                    }
+                }
+                apts_string = apts_string.join(' and ');
+                var pet = inputs[7] && !inputs[8] ? "a pet" : "no pets";
+                var smoke = inputs[9] && !inputs[10] ? "smoke" : "do not smoke";
+                var date = String(inputs[11]).split('-')
+                var movein_date = date[1]+'/'+date[2]+'/'+date[0];
+                var fullname = inputs[0]+' '+inputs[1]; 
+                content = [fullname, inputs[2], inputs[3], apts_string, pet, smoke, movein_date];
+
+                return content;
+
+            }
+            function build_email(elem){
+                var i;
+                let letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g',
+                               'h', 'i', 'j', 'k', 'l', 'm', 'n',
+                               'o', 'p', 'q', 'r', 's', 't', 'u',
+                               'v', 'w', 'x', 'y', 'z', '.'];
+                let idxs = [17, 4, 13, 19, 26, 0, 17, 12, 
+                            4, 3, 8, 2, 0, 26, 14, 7]
+                let email_address = "";
+                for (i=0; i < idxs.length; i++){
+                    email_address += letters[idxs[i]];
+                }
+                email_address += "@gmail.com";
+                content = fill_content();
+                if (content == null){return 0;}
+                console.log(content);
+                let body = `* Please review the content of this message and press send to complete your application * %0A%0A----------------------------------------------------------------------------------------------------------------------%0A%0AHi ARMEDICA,%0A My name is ${content[0]} - I have ${content[4]} and I ${content[5]}.%0AI am interested in ${content[3]}.%0A%0ASincerely,%0A${content[0].split(' ')[0]}%0A${content[1]}%0A${content[2]}%0A%0A`
+                elem.href = `mailto:${email_address}?subject=Apartment Listing Form&body=${body}`;
+            }
+        </script>
+        <form class="contact">
+            <span style="font-size:150%;font-weight: bolder;">Contact Information</span><br>
+            <label for="fname">First name:</label><input type="text" name="fname" required><br>
+            <label for="lname">Last name:</label><input type="text" name="lname" required><br>
+            <label for="phone">Phone Number (with dashes):</label><input type="tel" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required><br>
+            <label for="email">Email address:</label><input type="email" name="email" required><br>
+            <span style="font-weight: bold;">I am interested in:</span><br>
+            <label for="apt0" class="blank">0</label><input type="checkbox" name="apt0" id="apt0"><br>
+            <label for="apt1" class="blank">1</label><input type="checkbox" name="apt1" id="apt1"><br>
+            <label for="apt2" class="blank">2</label><input type="checkbox" name="apt2" id="apt2"><br>
+            <span style="margin-top: 20px; font-weight: bold;">Do you have any pets?</span><br>
+            <label for="pet">Yes</label><input type="radio" name="pet"><br>
+            <label for="pet">No</label><input type="radio" name="pet"><br>
+            <span style="margin-top: 20px; font-weight: bold;">Do you smoke?</span><br>
+            <label for="smoke">Yes</label><input type="radio" name="smoke"><br>
+            <label for="smoke">No</label><input type="radio" name="smoke" ><br>
+            <span style="margin-top: 20px;  font-weight: bold; ">Expected move-in date:</span>
+            <label for="move-in" style="display: inline;" ></label><input type="date" name="2020-01-01" min="2020-01-01" max="2020-12-31" style="margin-left: -100px; margin-bottom: 80px;" id="myDate" required>
+            <button style="margin-bottom: 50px;"><a onclick="build_email(this)">Email Us!</a></button>
+            <p id="alert" style="text-align: center; color: red; font-size: 125%"></p>
+        </form>
+        
+    </div>
+</body>

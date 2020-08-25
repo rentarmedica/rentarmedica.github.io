@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en" >
+<head>
+    <meta name="Description" content="Personal website of ARMEDICA LLC">
+    <meta name="robots" content="index,follow">
+    <meta http-equiv="Content-Type" content="text/html"; charset="utf-8">
+    <meta name="revised" content="Victor, 8/21/20">
+    <meta name="Publisher" content="ARMEDICA LLC">
+
+    <link href='https://fonts.googleapis.com/css?family=Carme' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css?family=Archivo:500|Open+Sans:300,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Chivo:300,700|Playfair+Display:700i" rel="stylesheet">
+
+    <style>
+        .ribbon{
+            margin: 0 auto;
+            position:relative;
+            margin:50px;
+            text-align:center;
+        }
+        .text{
+            margin: 0 auto;
+            display:inline-block;
+            padding:0.25em 2em; /*controls height and width of ribbon*/
+            min-width:20em;
+            line-height:1.25em;
+            background: #FFD72A;
+            position:relative;
+            font-size: 275%;
+            font-family: Copperplate, Marker Felt;
+        }
+        .ribbon:after,.ribbon:before,
+        .text:before,.text:after,
+        .bold:before{
+            content:'';
+            position:absolute;
+            border-style:solid;
+        }
+        .ribbon:before{
+            margin: 0 auto;
+            top:0.3em; left:0.2em;
+            width:100%; height:100%;
+            border:none;
+            background:#EBECED;
+            z-index:-2;
+        }
+        .text:before{
+            bottom:100%; left:0;
+            border-width: .5em .7em 0 0;
+            border-color: transparent #FC9544 transparent transparent;
+        }
+        .text:after{
+            top:100%; right:0;
+            border-width: .5em 2em 0 0;
+            border-color: #FC9544 transparent transparent transparent;
+        }
+        .ribbon:after, .bold:before{
+            top:0.5em;right:-2em;
+            border-width: 1.1em 1em 1.1em 3em;
+            border-color: #FECC30 transparent #FECC30 #FECC30;
+            z-index:-1;
+        }
+        .bold:before{
+            border-color: #EBECED transparent #EBECED #EBECED;
+            top:0.7em;
+            right:-2.3em;
+        }
+        .navbar{
+            text-align: center;
+            margin: 50px 10px 0px 15px;
+            padding: 20px 1% 20px 1%;
+            background-color: #cd853f;
+            border-radius: 40px;
+        }
+        .navbar span{
+            font-size: x-large;
+            font-family: Playfair Display, Verdana, Helvetica, serif;
+            display: inline-block;
+            position: relative;
+            white-space:nowrap;
+        }
+        .navbar a{
+            color: white;
+            text-decoration: none;
+        }
+        .listing{
+            margin: 0 auto;
+            text-align: center;
+            background-color: white;
+            min-height: 160px;
+            min-width: 500px;
+            height: 50%;
+            width: 40%;
+            padding: 30px 30px 15px 30px;
+            margin-bottom: 50px;
+            border-radius: 35px;
+            content: center;
+            position: sticky;
+        }
+        .listing:hover {
+            padding: 29px 29px 13px 29px;
+            box-shadow: 0 0 10px #2f4f4f;
+        }
+        .listing img{
+            width: 100%;
+            height: auto;
+            min-height: 80px;
+            min-width: 50px;
+            display: inline-block;
+            border-radius: 25px;
+            margin:0px;
+            background-color: #f8f8ff
+        }
+        .listing p{
+            font-size: 125%;
+            font-family: Open Sans, Carme, Verdana, Helvetica, serif;
+            float: top;
+            padding-left: 20px;
+            white-space:nowrap;
+            position: static;
+
+        }
+        .listing span{
+            font-size: 125%;
+            font-family: Open Sans, Carme, Verdana, Helvetica, serif;
+            float: top;
+            padding-left: 20px;
+            white-space:nowrap;
+            position: static;
+
+        }
+        .backdrop{
+            padding: 0px;
+            margin: -10px;
+            border: 0px;
+            overflow: hidden;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-image: linear-gradient(#f4af60, #8b4513);
+        }
+        .super{
+            vertical-align: super;
+            font-size: x-large;
+        }
+        .spacer {
+            display: inline-block;
+            width: 5px;
+        }
+        @media screen and (max-width: 1050px) {
+            .navbar a{
+                font-size:medium;
+            }
+        }
+        @media screen and (max-width: 100px) {
+            .navbar a{
+                font-size:small;
+            }
+        }
+        @media screen and (max-width: 1200px) {
+        .text{
+                margin: 0 auto;
+                display:inline-block;
+                padding:0.5em 5em; /*controls height and width of ribbon*/
+                min-width:10em;
+                line-height:2em;
+                background: #FFD72A;
+                position:relative;
+                font-size: 120%;
+                font-family: Copperplate, Marker Felt;
+            }
+        }
+        .super{
+            vertical-align: super;
+            font-size: medium;
+        }
+        .ribbon span a{
+            color: white;
+            font-size: x-large;
+        }
+        }
+        body{
+            padding: 0px;
+            margin: 0px;
+            border: 0px;
+            background-color: #dcdcdc;
+        }
+    </style>
+</head>
+<body>
+    <div class="backdrop">
+        <div class="navbar">
+            <span style="margin-left: 1%;"><a href="index.html">Available Listings</a></span>
+            <span style="margin-left: 25%; margin-right: 30%;"><a href="policies.html">Policies</a></span>
+            <span style="margin-left: 5%; margin-right: 10%; display: none;"><a href="payment.html">Make Payment</a></span>
+            <span style="margin-right: 1%;"><a href="contact.html">Contact Us</a></span>
+        </div>
+            <p class="ribbon">
+                <span class="text">
+                    <strong class="bold">Open House Sep. 2<span class="super">nd</span>and 3<span class="super">rd</span> from 1-4 PM:</strong>
+                    </br>
+                    <a href="https://forms.gle/ictKz2jKkyPHVtzm9">CLICK HERE TO SIGN UP NOW!</a>
+                </span>
+            </p>
+        <div class="listing" onclick="location.href='apartment0.html';" style="cursor: pointer; margin-top: 50px;">
+            <img src="images/room1.jpg">
+            <p class="blank">0</p>
+            <p style="color: #006400"><strong class="blank">/mo</strong></p>
+            <span class="blank"> beds</span><span class="spacer"></span><span class="blank"> baths</span><span class="spacer"></span><span class="blank"></span>
+        </div>
+        <div class="listing" onclick="location.href='apartment1.html';" style="cursor: pointer;">
+            <img src="images/room2.jpg">
+            <p class="blank">1</p>
+            <p style="color: #006400"><strong class="blank">/mo</strong></p>
+            <span class="blank"> beds</span><span class="spacer"></span><span class="blank"> baths</span><span class="spacer"></span><span class="blank"></span>
+        </div>
+        <div class="listing" onclick="location.href='apartment2.html';" style="cursor: pointer;">
+            <img src="images/room3.jpg">
+            <p class="blank">2</p>
+            <p style="color: #006400"><strong class="blank">/mo</strong></p>
+            <span class="blank"> beds</span><span class="spacer"></span><span class="blank"> baths</span><span class="spacer"></span><span class="blank"></span>
+        </div>
+        <script>
+        window.onload=function(){
+            save_apartment_info();
+            fillBlanks();
+        }
+        function save_apartment_info(){
+            sessionStorage.clear();
+            sessionStorage.setItem('0', '1439 Goldie Lane, Columbus OH/1623/2/2/0');
+            sessionStorage.setItem('1', '3791 Fittro Street, Columbus OH/1012/3/1/1');
+            sessionStorage.setItem('2', '4234 Goff Avenue, Columbus OH/846/1/2/0');
+        }
+        function fillBlanks(){
+            var i;
+            var blank_addresses = document.getElementsByClassName("blank");
+            for (i=0; i < blank_addresses.length; i+=5){
+                key = blank_addresses[i].innerHTML;
+                if (sessionStorage.getItem(key) == null){continue;}
+                raw_info = sessionStorage.getItem(key).split('/');
+                blank_addresses[i].innerHTML = raw_info[0];
+                blank_addresses[i+1].innerHTML = '$'+raw_info[1]+blank_addresses[i+1].innerHTML;
+                blank_addresses[i+2].innerHTML = raw_info[2]+blank_addresses[i+2].innerHTML;
+                blank_addresses[i+3].innerHTML = raw_info[3]+blank_addresses[i+3].innerHTML;
+                blank_addresses[i+4].innerHTML = raw_info[4] == 0? "Pets Not Allowed":"Pets Allowed";
+            }
+        }
+    </script>
+    </div>
+</body>
