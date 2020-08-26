@@ -21,7 +21,7 @@
         .text{
             margin: 0 auto;
             display:inline-block;
-            padding:0.25em 2em; /*controls height and width of ribbon*/
+            padding:0.25em 5em; /*controls height and width of ribbon*/
             min-width:20em;
             line-height:1.25em;
             background: #FFD72A;
@@ -66,14 +66,15 @@
             right:-2.3em;
         }
         .navbar{
-            text-align: center;
-            margin: 50px 10px 0px 15px;
-            padding: 20px 1% 20px 1%;
+            margin: 50px 50px 0px 50px;
+            padding: 20px 0px 20px 0px;
             background-color: #cd853f;
             border-radius: 40px;
         }
         .navbar span{
-            font-size: large;
+            text-align: center;
+            width: 33%;
+            font-size: 150%;
             font-family: Playfair Display, Verdana, Helvetica, serif;
             display: inline-block;
             position: relative;
@@ -102,7 +103,7 @@
             box-shadow: 0 0 10px #2f4f4f;
         }
         .listing img{
-            width: 100%;
+            width: 85%;
             height: auto;
             min-height: 80px;
             min-width: 50px;
@@ -160,12 +161,12 @@
         .text{
                 margin: 0 auto;
                 display:inline-block;
-                padding:0.5em 5em; /*controls height and width of ribbon*/
+                padding:0.5em 10em; /*controls height and width of ribbon*/
                 min-width:10em;
                 line-height:2em;
                 background: #FFD72A;
                 position:relative;
-                font-size: medium;
+                font-size: 90%;
                 font-family: Copperplate, Marker Felt;
             }
         }
@@ -184,10 +185,9 @@
 <body>
     <div class="backdrop">
         <div class="navbar">
-            <span style="margin-left: 1%;"><a href="index.html">Available Listings</a></span>
-            <span style="margin-left: 25%; margin-right: 30%;"><a href="policies.html">Policies</a></span>
-            <span style="margin-left: 5%; margin-right: 10%; display: none;"><a href="payment.html">Make Payment</a></span>
-            <span style="margin-right: 1%;"><a href="contact.html">Contact Us</a></span>
+            <span style="float: left;"><a href="index.html">Available Listings</a></span>
+            <span><a href="policies.html">Policies</a></span>
+            <span style="float: right;"><a href="contact.html">Contact Us</a></span>
         </div>
             <p class="ribbon">
                 <span class="text">
@@ -197,22 +197,16 @@
                 </span>
             </p>
         <div class="listing" onclick="location.href='apartment0.html';" style="cursor: pointer; margin-top: 50px;">
-            <img src="images/room1.jpg">
+            <img src="images/hedgerow.png">
             <p class="blank">0</p>
             <p style="color: #006400"><strong class="blank">/mo</strong></p>
-            <span class="blank"> beds</span><span class="spacer"></span><span class="blank"> baths</span><span class="spacer"></span><span class="blank"></span>
+            <span class="blank"></span><span class="spacer"></span><span class="blank"></span><span class="spacer"></span><span class="blank"></span>
         </div>
         <div class="listing" onclick="location.href='apartment1.html';" style="cursor: pointer;">
-            <img src="images/room2.jpg">
+            <img src="images/21.jpg">
             <p class="blank">1</p>
             <p style="color: #006400"><strong class="blank">/mo</strong></p>
-            <span class="blank"> beds</span><span class="spacer"></span><span class="blank"> baths</span><span class="spacer"></span><span class="blank"></span>
-        </div>
-        <div class="listing" onclick="location.href='apartment2.html';" style="cursor: pointer;">
-            <img src="images/room3.jpg">
-            <p class="blank">2</p>
-            <p style="color: #006400"><strong class="blank">/mo</strong></p>
-            <span class="blank"> beds</span><span class="spacer"></span><span class="blank"> baths</span><span class="spacer"></span><span class="blank"></span>
+            <span class="blank"></span><span class="spacer"></span><span class="blank"></span><span class="spacer"></span><span class="blank"></span>
         </div>
         <script>
         window.onload=function(){
@@ -221,9 +215,14 @@
         }
         function save_apartment_info(){
             sessionStorage.clear();
-            sessionStorage.setItem('0', '1439 Goldie Lane, Columbus OH/1623/2/2/0');
-            sessionStorage.setItem('1', '3791 Fittro Street, Columbus OH/1012/3/1/1');
-            sessionStorage.setItem('2', '4234 Goff Avenue, Columbus OH/846/1/2/0');
+            sessionStorage.setItem('0', '2279G Hedgerow Rd, Columbus OH, 43220/1000/2/1/1');
+            sessionStorage.setItem('1', '2205G Hedgerow Rd, Columbus OH, 43220/900/1/1/1');
+        }
+        function allowed_pets(idx){
+            pets = {'0': "Cats Not", '1': "Cats",
+                    '2': "Dogs Not", '3': "Dogs", 
+                    '4': "Pets Not", '5': "Pets"}
+            return pets[idx]
         }
         function fillBlanks(){
             var i;
@@ -233,10 +232,10 @@
                 if (sessionStorage.getItem(key) == null){continue;}
                 raw_info = sessionStorage.getItem(key).split('/');
                 blank_addresses[i].innerHTML = raw_info[0];
-                blank_addresses[i+1].innerHTML = '$'+raw_info[1]+blank_addresses[i+1].innerHTML;
-                blank_addresses[i+2].innerHTML = raw_info[2]+blank_addresses[i+2].innerHTML;
-                blank_addresses[i+3].innerHTML = raw_info[3]+blank_addresses[i+3].innerHTML;
-                blank_addresses[i+4].innerHTML = raw_info[4] == 0? "Pets Not Allowed":"Pets Allowed";
+                blank_addresses[i+1].innerHTML = '$'+raw_info[1] + blank_addresses[i+1].innerHTML;
+                blank_addresses[i+2].innerHTML += raw_info[2] + (raw_info[2] > 1 ? " beds": " bed");
+                blank_addresses[i+3].innerHTML += raw_info[3] + (raw_info[3] > 1 ? " baths": " bath");
+                blank_addresses[i+4].innerHTML = allowed_pets(raw_info[4]) + " Allowed";
             }
         }
     </script>

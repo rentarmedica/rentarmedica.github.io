@@ -66,14 +66,15 @@
             right:-2.3em;
         }
         .navbar{
-            text-align: center;
-            margin: 50px 10px 0px 15px;
-            padding: 20px 1% 20px 1%;
+            margin: 50px 50px 0px 50px;
+            padding: 20px 0px 20px 0px;
             background-color: #cd853f;
             border-radius: 40px;
         }
         .navbar span{
-            font-size: large;
+            text-align: center;
+            width: 33%;
+            font-size: 150%;
             font-family: Playfair Display, Verdana, Helvetica, serif;
             display: inline-block;
             position: relative;
@@ -134,7 +135,7 @@
             position: relative;
         }
         .galleryItem img{
-            width: 60%;
+            width: 40%;
             height: auto;
         }
         .listingInfo{
@@ -153,7 +154,7 @@
             margin-left: 50px;
         }
         .listingInfo p{
-            font-size: 100%;
+            font-size: 120%;
             margin-left: 100px;
             word-wrap: break-word;
             overflow: hidden;
@@ -197,10 +198,9 @@
 <body>
     <div class="backdrop">
         <div class="navbar">
-            <span style="margin-left: 1%;"><a href="index.html">Available Listings</a></span>
-            <span style="margin-left: 25%; margin-right: 30%;"><a href="policies.html">Policies</a></span>
-            <span style="margin-left: 5%; margin-right: 10%; display: none;"><a href="payment.html">Make Payment</a></span>
-            <span style="margin-right: 1%;"><a href="contact.html">Contact Us</a></span>
+            <span style="float: left;"><a href="index.html">Available Listings</a></span>
+            <span><a href="policies.html">Policies</a></span>
+            <span style="float: right;"><a href="contact.html">Contact Us</a></span>
         </div>
         <p class="ribbon">
             <span class="text">
@@ -219,6 +219,19 @@
             function plusSlides(n) {
               showSlides(slideIndex += n);
             }
+            function allowed_pets(idx){
+                pets = {'0': "Cats Not", '1': "Cats",
+                        '2': "Dogs Not", '3': "Dogs", 
+                        '4': "Pets Not", '5': "Pets"}
+                return pets[idx]
+            }
+            function not_allowed_pets(idx){
+                pets = {'0': "Cats Not", '1': "Cats",
+                        '2': "Dogs Not", '3': "Dogs", 
+                        '4': "Pets Not", '5': "Pets"}
+                bad_idx = (parseInt(idx) >= 2 ? parseInt(idx)-2: parseInt(idx)+2);
+                return pets[String(bad_idx)];
+            }
             function fillBlanks(){
                 var i;
                 var blank_addresses = document.getElementsByClassName("blank");
@@ -227,10 +240,10 @@
                     if (sessionStorage.getItem(key) == null){continue;}
                     raw_info = sessionStorage.getItem(key).split('/');
                     blank_addresses[i].innerHTML = raw_info[0];
-                    blank_addresses[i+1].innerHTML = '$'+raw_info[1]+blank_addresses[i+1].innerHTML;
-                    blank_addresses[i+2].innerHTML = raw_info[2]+blank_addresses[i+2].innerHTML;
-                    blank_addresses[i+3].innerHTML = raw_info[3]+blank_addresses[i+3].innerHTML;
-                    blank_addresses[i+4].innerHTML = raw_info[4] == 0? "Pets Not Allowed":"Pets Allowed";
+                    blank_addresses[i+1].innerHTML = '$'+raw_info[1] + blank_addresses[i+1].innerHTML;
+                    blank_addresses[i+2].innerHTML += raw_info[2] + (raw_info[2] > 1 ? " beds": " bed");
+                    blank_addresses[i+3].innerHTML += raw_info[3] + (raw_info[3] > 1 ? " baths": " bath");
+                    blank_addresses[i+4].innerHTML = `${allowed_pets(raw_info[4])} Allowed (${not_allowed_pets(raw_info[4])} Not Allowed)`;
                 }
             }
             function prepare_page() {
@@ -257,28 +270,18 @@
         </script>
         <div class="gallery">
             <div class="galleryItem" style="text-align: center;">
-                <img src="images/bathroom.jpg">
-                <div style="color:white;">1 / 3</div>
+                <img src="images/hedgerow.png">
+                <div style="color:white; display: none">1 / 1</div>
             </div>
-
-            <div class="galleryItem" style="text-align: center;">
-                <img src="images/grey.jpg">
-                <div style="color:white;">2 / 3</div>
-            </div>
-
-            <div class="galleryItem" style="text-align: center;">
-                <img src="images/house.jpg">
-                <div style="color:white;">3 / 3</div>
-            </div>
-            <a onclick="plusSlides(-1)" style="margin-right: 50px;">&laquo;</a>
-            <a onclick="plusSlides(1)" >&raquo;</a>
+            <a onclick="plusSlides(-1)" style="margin-right: 50px; display: none">&laquo;</a>
+            <a onclick="plusSlides(1)" style="display: none">&raquo;</a>
         </div>
         <div class="listingInfo">
             <h1 class="blank">0</h1>
             <h2 class="blank">/mo</h2>
-            <span class="blank" style="margin-left: 50px;"> beds</span><span class="spacer"></span><span class="blank"> baths</span><span class="spacer"></span><span class="blank"></span>
-            <p> Lorem ipsum dolor sit amet, unum ullum eirmod vis in. Eos in prima etiam ullamcorper, in vim solet putant torquatos, duo 
-                viderer mentitum ad. Meis convenire qui eu, cu pri quis quidam euismod, nec id reque explicari. Facer paulo nemore eu est. Fierent quaerendum eos eu, eam an phaedrum dissentias. Ut malis dissentiunt per, est vide probo tibique et. Duo minim utinam prompta an, putant vocibus partiendo id nam. Est alii laudem ad, nec te populo causae consequuntur. Ut qui quot eius, at quaestio salutandi nam. Id has odio nominavi ocurreret, no cum enim timeam legimus. Vis decore qualisque principes eu.Sed labores argumentum id, justo vidisse molestiae vim id, duo at altera habemus feugait. Tota mazim ludus in sea, cu sea dicta virtute luptatum. Ex nemore scribentur nec. Ut sumo saepe nominati qui. Qui ne magna contentiones. Vel meis doming in.Per possit dolorum ne. Est velit platonem eu. Iisque ullamcorper et vis. Ad fabellas hendrerit repudiandae quo. Insolens signiferumque cu has, nibh scripta eum ad.No esse sonet consequat cum, in pro recusabo eloquentiam. Cum ei mucius periculis, usu doctus mediocrem assentior an, quo simul cetero ad. Sed ne menandri accusamus adipiscing. Iriure feugait ne vim, singulis electram et eum.
+            <span class="blank" style="margin-left: 50px;"></span><span class="spacer"></span><span class="blank"></span><span class="spacer"></span><span class="blank"></span>
+            <p> 
+                Spacious condo located on the 2nd floor in the Enclave on Bethel Rd. Secured entrance with intercom, off street parking, full access to the pool, tennis courts, basketball courts, and clubhouse are included. The unit features two large bedrooms with walk-in closets and one full bath. Beautiful Pergo wood flooring in the living and dining rooms with ceramic tile in the kitchen and bathroom. The kitchen is fully equipped and the unit has its own large capacity washer and dryer.  Close to OSU, 315, grocery, restaurants, shopping, movies, and the airport. Dublin City School District.
             </p>
             <button type="button"><a href="contact.html">Email Us!</a></button>
         </div>
