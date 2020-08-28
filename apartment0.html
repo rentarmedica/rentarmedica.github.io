@@ -151,7 +151,7 @@
         .listingInfo{
             color: white;
             font-family: Open Sans, Carme, Verdana, Helvetica, serif;
-            padding: 0px 150px 20px 20px;
+            padding: 0px 100px 20px 20px;
             position: static;
             margin-bottom: 100px;
         }
@@ -165,14 +165,18 @@
         }
         .listingInfo p{
             font-size: 120%;
-            margin-left: 100px;
+            margin-left: 75px;
             word-wrap: break-word;
-            overflow: hidden;
+            overflow: scroll;
             text-align: justify;
         }
         @media screen and (max-width: 800px) {
+            .listingInfo {
+                padding-right: 50px;
+            }
             .listingInfo p{
                 font-size: 100%;
+                margin-right: 10px;
             }
             .navbar a{
                 font-size:x-small;
