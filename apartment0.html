@@ -10,7 +10,7 @@
 
       gtag('config', 'UA-176724874-1');
     </script>
-    <meta name="Description" content="Personal website of ARMEDICA LLC">
+    <meta name="description" content="Apartments for Rent in Columbus OH, 43220">
     <meta name="robots" content="index,follow">
     <meta http-equiv="Content-Type" content="text/html"; charset="utf-8">
     <meta name="revised" content="Victor, 8/21/20">
@@ -233,10 +233,17 @@
         </p>
         <script>
             var slideIndex = 0;
-            let address = "1439 Goldie Lane, Columbus OH";
             window.onload = function() {
+                save_apartment_info();
                 fillBlanks();
                 prepare_page();
+            }
+            function save_apartment_info(){
+                if (sessionStorage.length < 2){
+                    sessionStorage.clear()
+                    sessionStorage.setItem('0', '2279G Hedgerow Rd, Columbus OH, 43220/975/2/1/1');
+                    sessionStorage.setItem('1', '2205G Hedgerow Rd, Columbus OH, 43220/875/1/1/1');
+                }
             }
             function plusSlides(n) {
               showSlides(slideIndex += n);
