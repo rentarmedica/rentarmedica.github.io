@@ -69,7 +69,7 @@
         .ribbon:after, .bold:before{
             top:0.5em;right:-2em;
             border-width: 1.1em 1em 1.1em 3em;
-            border-color: #FECC30 transparent #FECC30 #FECC30;
+            border-color: #E41234 transparent #E41234 #E41234;
             z-index:-1;
         }
         .bold:before{
@@ -231,27 +231,30 @@
         </div>
             <p class="ribbon">
                 <span class="text">
-                    <strong class="bold">Open House Sep. 2<span class="super">nd</span>and 3<span class="super">rd</span> from 12-3 PM:</strong>
-                    </br>
-                    <a href="https://forms.gle/ictKz2jKkyPHVtzm9">CLICK HERE TO SIGN UP NOW!</a>
+                    <strong class="bold">No properties are currently available - check back soon fo new listings!!</strong>
+                    <!---Open House Sep. 2<span class="super">nd</span>and 3<span class="super">rd</span> from 12-3 PM:</strong>
+                    -</br>
+                    <a href="https://forms.gle/ictKz2jKkyPHVtzm9">CLICK HERE TO SIGN UP NOW!</a>--->
                 </span>
             </p>
-        <div class="listing" onclick="location.href='apartment0.html';" style="cursor: pointer; margin-top: 50px;">
+        <div class="listing" onclick="location.href='apartment00.html';" style="display: none;">
+        <!---style="cursor: pointer; margin-top: 50px;">--->
             <img src="images/hedgerow3.jpg">
             <p class="blank">0</p>
             <p style="color: #006400"><strong class="blank">/mo</strong></p>
             <span class="blank"></span><span class="spacer"></span><span class="blank"></span><span class="spacer"></span><span class="blank"></span>
         </div>
-        <div class="listing" onclick="location.href='apartment1.html';" style="cursor: pointer;">
+        <div class="listing" onclick="location.href='apartment1.html';" style="display: none;">
+        <!---style="cursor: pointer;">--->
             <img src="images/21.jpg">
             <p class="blank">1</p>
             <p style="color: #006400"><strong class="blank">/mo</strong></p>
             <span class="blank"></span><span class="spacer"></span><span class="blank"></span><span class="spacer"></span><span class="blank"></span>
         </div>
-        <script>
+        <!-- <script>
         window.onload=function(){
-            save_apartment_info();
-            fillBlanks();
+            //save_apartment_info();
+            // fillBlanks();
         }
         function save_apartment_info(){
             sessionStorage.clear();
@@ -260,7 +263,7 @@
         }
         function allowed_pets(idx){
             pets = {'0': "Cats Not", '1': "Cats",
-                    '2': "Dogs Not", '3': "Dogs", 
+                    '2': "Dogs Not", '3': "Dogs",
                     '4': "Pets Not", '5': "Pets"}
             return pets[idx]
         }
@@ -278,6 +281,6 @@
                 blank_addresses[i+4].innerHTML = allowed_pets(raw_info[4]) + " Allowed";
             }
         }
-    </script>
+    </script> -->
     </div>
 </body>
